@@ -21,7 +21,7 @@ import 'package:open_social_share/platforms/whatsapp.dart';
 /// * WhatsApp
 ///
 /// * Twitter
-class LecleSocialShare {
+class OpenSocialShare {
   /// Static instance to call the Facebook share functions
   static final _f = FacebookShare();
 

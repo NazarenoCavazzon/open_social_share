@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
 A Flutter project support share data to social media (Facebook, Instagram, etc.)
                        DESC
-  s.homepage         = 'http://lecle.vn'
+  s.homepage         = 'https://github.com/NazarenoCavazzon/open_social_share'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Your Company' => 'email@example.com' }
   s.source           = { :path => '.' }

@@ -55,9 +55,9 @@ class _MyAppState extends State<MyApp> {
                       await _picker.pickVideo(source: ImageSource.gallery);
 
                   if (video != null) {
-                    LecleSocialShare.F.shareFileToFacebook(
+                    OpenSocialShare.F.shareFileToFacebook(
                       filePath: video.path,
-                      dstPath: '/LecleSocialShareExample/Facebook/',
+                      dstPath: '/OpenSocialShareExample/Facebook/',
                       fileProviderPath: '.social.share.fileprovider',
                       fileType: AssetType.video,
                     );
@@ -67,7 +67,7 @@ class _MyAppState extends State<MyApp> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  LecleSocialShare.F.shareFeedContentToFacebook(
+                  OpenSocialShare.F.shareFeedContentToFacebook(
                     link: "https://pub.dev",
                     linkName: "pub",
                     hashtag: "flutter_pub",
@@ -77,7 +77,7 @@ class _MyAppState extends State<MyApp> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  LecleSocialShare.F.shareLinkContentToFacebook(
+                  OpenSocialShare.F.shareLinkContentToFacebook(
                     contentUrl: "https://pub.dev",
                   );
                 },
@@ -89,7 +89,7 @@ class _MyAppState extends State<MyApp> {
                       await _picker.pickImage(source: ImageSource.gallery);
 
                   if (texture != null) {
-                    LecleSocialShare.F.shareCameraEffectToFacebook(
+                    OpenSocialShare.F.shareCameraEffectToFacebook(
                       cameraEffectTextures: CameraEffectTextures(
                         textureKey: 'texture_key',
                         textureUrl: texture.path,
@@ -116,13 +116,13 @@ class _MyAppState extends State<MyApp> {
               ElevatedButton(
                 onPressed: () async {
                   imageUrls = (await _picker.pickMultiImage())
-                      ?.map((image) => image.path)
+                      .map((image) => image.path)
                       .toList();
                   videoUrls =
                       (await _pickFile(FileType.video, allowMultiple: true))
                           ?.paths;
 
-                  LecleSocialShare.F.shareMediaContentFileToFacebook(
+                  OpenSocialShare.F.shareMediaContentFileToFacebook(
                     imageUrls: imageUrls,
                     videoUrls: videoUrls,
                     fileProviderPath: '.social.share.fileprovider',
@@ -142,7 +142,7 @@ class _MyAppState extends State<MyApp> {
                   var image =
                       await _picker.pickImage(source: ImageSource.gallery);
 
-                  LecleSocialShare.F.shareBackgroundAssetFileToFacebookStory(
+                  OpenSocialShare.F.shareBackgroundAssetFileToFacebookStory(
                     appId: '3258588111079263',
                     filePath: image?.path,
                     fileProviderPath: '.social.share.fileprovider',
@@ -158,7 +158,7 @@ class _MyAppState extends State<MyApp> {
                   var image =
                       await _picker.pickImage(source: ImageSource.gallery);
 
-                  LecleSocialShare.F.shareStickerAssetToFacebookStory(
+                  OpenSocialShare.F.shareStickerAssetToFacebookStory(
                     appId: '3258588111079263',
                     stickerPath: image?.path,
                     fileProviderPath: '.social.share.fileprovider',
@@ -181,7 +181,7 @@ class _MyAppState extends State<MyApp> {
                     var image =
                         await _picker.pickImage(source: ImageSource.gallery);
 
-                    LecleSocialShare.F
+                    OpenSocialShare.F
                         .shareBitmapImageBackgroundAssetToFacebookStory(
                       imagePath: image?.path,
                       fileProviderPath: '.social.share.fileprovider',
@@ -198,7 +198,7 @@ class _MyAppState extends State<MyApp> {
                     var image =
                         await _picker.pickImage(source: ImageSource.gallery);
 
-                    LecleSocialShare.F
+                    OpenSocialShare.F
                         .shareImageBackgroundAssetContentToFacebookStory(
                       photoBackgroundAssetPath: image?.path,
                       fileProviderPath: '.social.share.fileprovider',
@@ -215,7 +215,7 @@ class _MyAppState extends State<MyApp> {
                     var video =
                         await _picker.pickVideo(source: ImageSource.gallery);
 
-                    LecleSocialShare.F
+                    OpenSocialShare.F
                         .shareVideoBackgroundAssetContentToFacebookStory(
                       videoBackgroundAssetPath: video?.path,
                       fileProviderPath: '.social.share.fileprovider',
@@ -232,12 +232,12 @@ class _MyAppState extends State<MyApp> {
                     var images = await _picker.pickMultiImage();
                     var stickers = await _picker.pickMultiImage();
 
-                    LecleSocialShare.F
+                    OpenSocialShare.F
                         .shareBackgroundImageAndStickerToFacebookStoryiOS(
                       photoBackgroundAssetPaths:
-                          images?.map((image) => image.path).toList(),
+                          images.map((image) => image.path).toList(),
                       stickerAssetPaths:
-                          stickers?.map((image) => image.path).toList(),
+                          stickers.map((image) => image.path).toList(),
                       appId: '3258588111079263',
                     );
                   },
@@ -261,7 +261,7 @@ class _MyAppState extends State<MyApp> {
                   }
                   var video = await _pickFile(FileType.video);
 
-                  LecleSocialShare.F.shareVideoToFacebookReels(
+                  OpenSocialShare.F.shareVideoToFacebookReels(
                     filePath: video?.paths[0],
                     fileProviderPath: '.social.share.fileprovider',
                     appId: '3258588111079263',
@@ -284,7 +284,7 @@ class _MyAppState extends State<MyApp> {
                       await _picker.pickImage(source: ImageSource.gallery);
 
                   if (video != null) {
-                    LecleSocialShare.I.shareFileToInstagram(
+                    OpenSocialShare.I.shareFileToInstagram(
                       filePath: video.path,
                       fileProviderPath: '.social.share.fileprovider',
                       fileType: AssetType.image,
@@ -295,7 +295,7 @@ class _MyAppState extends State<MyApp> {
               ),
               ElevatedButton(
                 onPressed: () async {
-                  LecleSocialShare.I.sendMessageToInstagram(
+                  OpenSocialShare.I.sendMessageToInstagram(
                     message: 'Hello world',
                   );
                 },
@@ -313,7 +313,7 @@ class _MyAppState extends State<MyApp> {
                   var video =
                       await _picker.pickVideo(source: ImageSource.gallery);
 
-                  LecleSocialShare.M
+                  OpenSocialShare.M
                       .shareFileToMessenger(
                     filePath: video?.path,
                     fileProviderPath: '.social.share.fileprovider',
@@ -329,7 +329,7 @@ class _MyAppState extends State<MyApp> {
               ),
               ElevatedButton(
                 onPressed: () async {
-                  LecleSocialShare.M.sendMessageToMessenger(
+                  OpenSocialShare.M.sendMessageToMessenger(
                     message: 'https://pub.dev',
                     quote: 'Hello world',
                     hashtag: '#hello',
@@ -339,7 +339,7 @@ class _MyAppState extends State<MyApp> {
               ),
               ElevatedButton(
                 onPressed: () async {
-                  LecleSocialShare.M.shareLinkContentToMessenger(
+                  OpenSocialShare.M.shareLinkContentToMessenger(
                     contentUrl: 'https://pub.dev',
                     quote: 'Hello world',
                     hashtag: '#hello',
@@ -356,7 +356,7 @@ class _MyAppState extends State<MyApp> {
               ),
               ElevatedButton(
                 onPressed: () async {
-                  LecleSocialShare.T.sendMessageToTelegram(
+                  OpenSocialShare.T.sendMessageToTelegram(
                     message: 'Hello world',
                   );
                 },
@@ -364,7 +364,7 @@ class _MyAppState extends State<MyApp> {
               ),
               ElevatedButton(
                 onPressed: () async {
-                  LecleSocialShare.T.openTelegramDirectMessage(
+                  OpenSocialShare.T.openTelegramDirectMessage(
                     username: 'user_name',
                   );
                 },
@@ -372,7 +372,7 @@ class _MyAppState extends State<MyApp> {
               ),
               ElevatedButton(
                 onPressed: () async {
-                  LecleSocialShare.T.openTelegramChannelViaShareLink(
+                  OpenSocialShare.T.openTelegramChannelViaShareLink(
                     inviteLink: 'your_invite_link',
                   );
                 },
@@ -382,7 +382,7 @@ class _MyAppState extends State<MyApp> {
                 onPressed: () async {
                   var file = await _pickFile(FileType.any);
 
-                  LecleSocialShare.T.shareFileToTelegram(
+                  OpenSocialShare.T.shareFileToTelegram(
                     filePath: file?.paths[0],
                     fileProviderPath: '.social.share.fileprovider',
                     fileType: AssetType.any,
@@ -402,7 +402,7 @@ class _MyAppState extends State<MyApp> {
                 onPressed: () async {
                   var file = await _pickFile(FileType.any);
 
-                  LecleSocialShare.W.shareFileToWhatsApp(
+                  OpenSocialShare.W.shareFileToWhatsApp(
                     filePath: file?.paths[0],
                     fileType: AssetType.pdf,
                     fileProviderPath: '.social.share.fileprovider',
@@ -413,7 +413,7 @@ class _MyAppState extends State<MyApp> {
               ),
               ElevatedButton(
                 onPressed: () async {
-                  LecleSocialShare.W.sendMessageToWhatsApp(
+                  OpenSocialShare.W.sendMessageToWhatsApp(
                     message: 'https://pub.dev',
                     phoneNumber: "receiver_phone_number",
                   );
@@ -429,7 +429,7 @@ class _MyAppState extends State<MyApp> {
               ),
               ElevatedButton(
                 onPressed: () async {
-                  LecleSocialShare.TW.createTwitterTweet(
+                  OpenSocialShare.TW.createTwitterTweet(
                     title: 'Hello world',
                     attachedUrl: "https://pub.dev",
                     hashtags: [
@@ -447,7 +447,7 @@ class _MyAppState extends State<MyApp> {
                   var file =
                       await _picker.pickImage(source: ImageSource.gallery);
 
-                  LecleSocialShare.TW.shareFileToTwitter(
+                  OpenSocialShare.TW.shareFileToTwitter(
                     filePath: file?.path,
                     fileProviderPath: '.social.share.fileprovider',
                     fileType: AssetType.image,
@@ -469,8 +469,8 @@ class _MyAppState extends State<MyApp> {
                 onPressed: () async {
                   var res = await _picker.pickMultiImage();
 
-                  LecleSocialShare.TI.shareFilesToTikTok(
-                    fileUrls: res?.map((e) => e.path).toList(),
+                  OpenSocialShare.TI.shareFilesToTikTok(
+                    fileUrls: res.map((e) => e.path).toList(),
                     fileType: AssetType.image,
                     fileProviderPath: '.social.share.fileprovider',
                   );
@@ -479,7 +479,7 @@ class _MyAppState extends State<MyApp> {
               ),
               ElevatedButton(
                 onPressed: () async {
-                  LecleSocialShare.TI.openTikTokUserPage(
+                  OpenSocialShare.TI.openTikTokUserPage(
                     username: 'username',
                   );
                 },

@@ -217,7 +217,7 @@ class FacebookShare {
   ///
   /// Example with color:
   /// ``` dart
-  /// LecleSocialShare.shareStickerAssetToFacebookStory(
+  /// OpenSocialShare.shareStickerAssetToFacebookStory(
   ///   appId: 'your_facebook_app_id',
   ///   stickerPath: 'your_image_path',
   ///   stickerTopBgColors: ['#33FF33'],
@@ -418,7 +418,7 @@ class FacebookShare {
   ///
   /// **Example with color:**
   /// ``` dart
-  /// LecleSocialShare.shareVideoToFacebookReelsAndroid(
+  /// OpenSocialShare.shareVideoToFacebookReelsAndroid(
   ///   appId: 'your_facebook_app_id',
   ///   filePath: 'your_image_file_path',
   ///   stickerTopBgColor: '#33FF33',
@@ -463,7 +463,7 @@ class FacebookShare {
   ///
   /// Example with color:
   /// ``` dart
-  /// LecleSocialShare.shareBackgroundImageAndStickerToFacebookStoryiOS(
+  /// OpenSocialShare.shareBackgroundImageAndStickerToFacebookStoryiOS(
   ///   appId: 'your_facebook_app_id',
   ///   photoBackgroundAssetPaths: ['your_image_paths'],
   ///   stickerAssetPaths: ['your_sticker_paths'],

@@ -1,5 +1,7 @@
 # open_social_share
 
+This is a fork of lecle_social_share package.
+
 A Flutter project support share file to social media (Facebook, Instagram, etc.). If you only want to share files on certain platforms, 
 this plugin is made for you.
 
@@ -13,7 +15,7 @@ Current supported platform:
 * ***Twitter***
 * ***TikTok***
 
-There are static instances in LecleSocialShare class represent for:
+There are static instances in OpenSocialShare class represent for:
 * F: Facebook
 * I: Instagram
 * M: Messenger
@@ -22,7 +24,7 @@ There are static instances in LecleSocialShare class represent for:
 * TW: Twitter
 * TI: TikTok
 
-**Simply use LecleSocialShare class and call the instance of which platform you want to share 
+**Simply use OpenSocialShare class and call the instance of which platform you want to share 
 then call the corresponding method from the instance**
 
 ## Android
@@ -403,7 +405,7 @@ ElevatedButton(
             await _picker.pickImage(source: ImageSource.gallery);
     
     if (video != null) {
-      LecleSocialShare.F.shareFileToFacebook(
+      OpenSocialShare.F.shareFileToFacebook(
         filePath: video.path,
         dstPath: 'your_custom_save_folder',
         fileProviderPath: 'your_custom_fileProvider_path',
@@ -422,7 +424,7 @@ ElevatedButton(
 
 ElevatedButton(
   onPressed: () {
-    LecleSocialShare.F.shareFeedContentToFacebook(
+    OpenSocialShare.F.shareFeedContentToFacebook(
       link: "https://pub.dev",
       linkName: "pub",
       hashtag: "flutter_pub",
@@ -439,7 +441,7 @@ ElevatedButton(
 
 ElevatedButton(
   onPressed: () {
-    LecleSocialShare.F.shareLinkContentToFacebook(
+    OpenSocialShare.F.shareLinkContentToFacebook(
       contentUrl: "https://pub.dev",
     );
   },
@@ -457,7 +459,7 @@ ElevatedButton(
   imageUrls = (await _picker.pickMultiImage())?.map((image) => image.path).toList();
   videoUrls = (await _pickFile(FileType.video, allowMultiple: true))?.paths;
   
-    LecleSocialShare.F.shareMediaContentFileToFacebook(
+    OpenSocialShare.F.shareMediaContentFileToFacebook(
       imageUrls: imageUrls,
       videoUrls: videoUrls,
       fileProviderPath: 'your_custom_fileProvider_path',
@@ -478,7 +480,7 @@ ElevatedButton(
         await _picker.pickImage(source: ImageSource.gallery);
 
     if (texture != null) {
-      LecleSocialShare.F.shareCameraEffectToFacebook(
+      OpenSocialShare.F.shareCameraEffectToFacebook(
         cameraEffectTextures: CameraEffectTextures(
           textureKey: 'texture_key',
           textureUrl: texture.path,
@@ -505,7 +507,7 @@ ElevatedButton(
   onPressed: () async {
     var image = await _picker.pickVideo(source: ImageSource.gallery);
     
-    LecleSocialShare.F.shareBackgroundAssetFileToFacebookStory(
+    OpenSocialShare.F.shareBackgroundAssetFileToFacebookStory(
       appId: 'your_facebook_app_id',
       filePath: image?.path,
       fileProviderPath: 'your_custom_fileProvider_path',
@@ -526,7 +528,7 @@ ElevatedButton(
 ElevatedButton(
   onPressed: () async {
     var image = await _picker.pickImage(source: ImageSource.gallery);
-    LecleSocialShare.F.shareStickerAssetToFacebookStory(
+    OpenSocialShare.F.shareStickerAssetToFacebookStory(
       appId: 'your_facebook_app_id',
       stickerPath: image?.path,
       fileProviderPath: 'your_custom_fileProvider_path',
@@ -549,7 +551,7 @@ Visibility(
   child: ElevatedButton(
     onPressed: () async {
       var image = await _picker.pickImage(source: ImageSource.gallery);
-      LecleSocialShare.F.shareBitmapImageBackgroundAssetToFacebookStory(
+      OpenSocialShare.F.shareBitmapImageBackgroundAssetToFacebookStory(
         imagePath: image?.path,
         fileProviderPath: 'your_custom_fileProvider_path',
       );
@@ -572,7 +574,7 @@ Visibility(
   child: ElevatedButton(
     onPressed: () async {
       var image = await _picker.pickImage(source: ImageSource.gallery);
-      LecleSocialShare.F.shareImageBackgroundAssetContentToFacebookStory(
+      OpenSocialShare.F.shareImageBackgroundAssetContentToFacebookStory(
         photoBackgroundAssetPath: image?.path,
         fileProviderPath: 'your_custom_fileProvider_path',
       );
@@ -594,7 +596,7 @@ Visibility(
   child: ElevatedButton(
     onPressed: () async {
       var video = await _picker.pickVideo(source: ImageSource.gallery);
-      LecleSocialShare.F.shareVideoBackgroundAssetContentToFacebookStory(
+      OpenSocialShare.F.shareVideoBackgroundAssetContentToFacebookStory(
         videoBackgroundAssetPath: video?.path,
         fileProviderPath: 'your_custom_fileProvider_path',
       );
@@ -614,7 +616,7 @@ ElevatedButton(
     var sticker = await _picker.pickImage(source: ImageSource.gallery);
     var video = await _pickFile(FileType.video);
     
-    LecleSocialShare.F.shareVideoToFacebookReels(
+    OpenSocialShare.F.shareVideoToFacebookReels(
       filePath: video?.paths[0],
       fileProviderPath: 'your_custom_fileProvider_path',
       appId: 'your_facebook_app_id',
@@ -637,7 +639,7 @@ Visibility(
       var images = await _picker.pickMultiImage();
       var stickers = await _picker.pickMultiImage();
 
-      LecleSocialShare.F.shareBackgroundImageAndStickerToFacebookStoryiOS(
+      OpenSocialShare.F.shareBackgroundImageAndStickerToFacebookStoryiOS(
         photoBackgroundAssetPaths: images?.map((image) => image.path).toList(),
         stickerAssetPaths: stickers?.map((image) => image.path).toList(),
         appId: 'your_facebook_app_id',
@@ -660,7 +662,7 @@ ElevatedButton(
     var video = await _picker.pickImage(source: ImageSource.gallery);
   
     if (video != null) {
-      LecleSocialShare.I.shareFileToInstagram(
+      OpenSocialShare.I.shareFileToInstagram(
         filePath: video.path,
         fileProviderPath: 'your_custom_fileProvider_path',
         fileType: AssetType.image,
@@ -678,7 +680,7 @@ ElevatedButton(
 
 ElevatedButton(
   onPressed: () async {
-    LecleSocialShare.I.sendMessageToInstagram(
+    OpenSocialShare.I.sendMessageToInstagram(
       message: 'Hello world',
     );
   },
@@ -696,7 +698,7 @@ ElevatedButton(
   onPressed: () async {
     var video = await _picker.pickVideo(source: ImageSource.gallery);
     
-    LecleSocialShare.M.shareFileToMessenger(
+    OpenSocialShare.M.shareFileToMessenger(
       filePath: video?.path,
       fileProviderPath: 'your_custom_fileProvider_path',
       fileType: AssetType.video,
@@ -714,7 +716,7 @@ ElevatedButton(
 
 ElevatedButton(
   onPressed: () async {
-    LecleSocialShare.M.sendMessageToMessenger(
+    OpenSocialShare.M.sendMessageToMessenger(
       message: 'https://pub.dev',
       quote: 'Hello world',
       hashtag: '#hello',
@@ -730,7 +732,7 @@ ElevatedButton(
 
 ElevatedButton(
   onPressed: () async {
-    LecleSocialShare.M.shareLinkContentToMessenger(
+    OpenSocialShare.M.shareLinkContentToMessenger(
       contentUrl: 'https://pub.dev',
       quote: 'Hello world',
       hashtag: '#hello',
@@ -748,7 +750,7 @@ ElevatedButton(
 
 ElevatedButton(
   onPressed: () async {
-    LecleSocialShare.T.sendMessageToTelegram(
+    OpenSocialShare.T.sendMessageToTelegram(
       message: 'Hello world',
     );
   },
@@ -762,7 +764,7 @@ ElevatedButton(
 
 ElevatedButton(
   onPressed: () async {
-    LecleSocialShare.T.openTelegramDirectMessage(
+    OpenSocialShare.T.openTelegramDirectMessage(
       username: 'user_name',
     );
   },
@@ -776,7 +778,7 @@ ElevatedButton(
 
 ElevatedButton(
   onPressed: () async {
-    LecleSocialShare.T.openTelegramChannelViaShareLink(
+    OpenSocialShare.T.openTelegramChannelViaShareLink(
       inviteLink: 'your_invite_link',
     );
   },
@@ -792,7 +794,7 @@ ElevatedButton(
   onPressed: () async {
     var video = await _picker.pickVideo(source: ImageSource.gallery);
   
-    LecleSocialShare.T.shareFileToTelegram(
+    OpenSocialShare.T.shareFileToTelegram(
       filePath: video?.path,
       fileProviderPath: 'your_custom_fileProvider_path',
       fileType: AssetType.any,
@@ -806,7 +808,7 @@ ElevatedButton(
   onPressed: () async {
     var image = await _picker.pickImage(source: ImageSource.gallery);
 
-    LecleSocialShare.T.shareFileToTelegram(
+    OpenSocialShare.T.shareFileToTelegram(
       filePath: image?.path,
       fileProviderPath: 'your_custom_fileProvider_path',
       fileType: AssetType.any,
@@ -827,7 +829,7 @@ ElevatedButton(
 onPressed: () async {
     var file = await _pickFile(FileType.any);
   
-    LecleSocialShare.W.shareFileToWhatsApp(
+    OpenSocialShare.W.shareFileToWhatsApp(
       filePath: file?.paths[0],
       fileType: AssetType.pdf,
       fileProviderPath: 'your_custom_fileProvider_path',
@@ -845,7 +847,7 @@ onPressed: () async {
 
 ElevatedButton(
   onPressed: () async {
-    LecleSocialShare.W.sendMessageToWhatsApp(
+    OpenSocialShare.W.sendMessageToWhatsApp(
       message: 'https://pub.dev',
       phoneNumber: "receiver_phone_number",
     );
@@ -863,7 +865,7 @@ ElevatedButton(
 
 ElevatedButton(
   onPressed: () async {
-    LecleSocialShare.TW.createTwitterTweet(
+    OpenSocialShare.TW.createTwitterTweet(
       title: 'Hello world',
       attachedUrl: "https://pub.dev",
       hashtags: [
@@ -887,7 +889,7 @@ ElevatedButton(
   onPressed: () async {
     var file = await _picker.pickImage(source: ImageSource.gallery);
   
-    LecleSocialShare.TW.shareFileToTwitter(
+    OpenSocialShare.TW.shareFileToTwitter(
       filePath: file?.path,
       fileProviderPath: 'your_custom_fileProvider_path',
       fileType: AssetType.image,
@@ -911,7 +913,7 @@ ElevatedButton(
   onPressed: () async {
     var res = await _picker.pickMultiImage();
     
-    LecleSocialShare.TI.shareFilesToTikTok(
+    OpenSocialShare.TI.shareFilesToTikTok(
       fileUrls: res?.map((e) => e.path).toList(),
       fileType: AssetType.image,
       fileProviderPath: 'your_custom_fileProvider_path',
@@ -927,7 +929,7 @@ ElevatedButton(
 
 ElevatedButton(
   onPressed: () async {
-    LecleSocialShare.TI.openTikTokUserPage(
+    OpenSocialShare.TI.openTikTokUserPage(
       username: 'username',
     );
   },

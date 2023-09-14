@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Lecle Social Share</string>
+	<string>Open Social Share</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -89,7 +89,7 @@
     <key>FacebookClientToken</key>
     <string>b47ad583f83d5ddf0f0ee6333d2bc4ad</string>
     <key>FacebookDisplayName</key>
-    <string>Lecle Social Share Example</string>
+    <string>Open Social Share Example</string>
 
     <key>NSBonjourServices</key>
     <array>
