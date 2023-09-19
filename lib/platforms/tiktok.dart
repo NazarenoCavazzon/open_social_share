@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/services.dart';
 import 'package:open_social_share/open_social_share.dart';
 
@@ -26,6 +28,7 @@ class TikTokShare {
     // String? clientKey,
     // String? clientSecret,
   }) async {
+    if (Platform.isIOS) return;
     assert(
       fileType == AssetType.video || fileType == AssetType.image,
       "Only video and image types are supported",
@@ -54,6 +57,7 @@ class TikTokShare {
   Future<dynamic> openTikTokUserPage({
     required String username,
   }) async {
+    if (Platform.isIOS) return;
     if (username.contains('@')) {
       username = username.replaceAll('@', '');
     }

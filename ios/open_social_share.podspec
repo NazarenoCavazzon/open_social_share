@@ -16,10 +16,10 @@ A Flutter project support share data to social media (Facebook, Instagram, etc.)
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
 
-   s.dependency 'FBSDKCoreKit', '16.1.3'
-   s.dependency 'FBSDKShareKit', '16.1.3'
+   s.dependency 'FBSDKCoreKit', '16.0.1'
+   s.dependency 'FBSDKShareKit', '16.0.1'
    s.dependency 'TwitterKit5', '5.2.0'
-   s.dependency 'TikTokOpenSDK', '~> 5.0.15'
+   s.dependency 'TikTokOpenSDK', '~> 5.0.14'
    s.platform = :ios, '11.0'
 
    s.static_framework = true
