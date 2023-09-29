@@ -1,3 +1,7 @@
+## 1.0.5-6
+
+* twitter methods deleted because of compatibility issues
+
 ## 1.0.4
 
 * tik tok methods deleted because of compatibility issues

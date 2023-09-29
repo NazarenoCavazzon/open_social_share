@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/services.dart';
 import 'package:open_social_share/open_social_share.dart';
 
@@ -21,6 +23,7 @@ class TwitterShare {
     String? via,
     List<String>? related,
   }) async {
+    if (Platform.isIOS) return;
     return _channel.invokeMethod(
       'createTwitterTweet',
       <String, dynamic>{
@@ -55,6 +58,7 @@ class TwitterShare {
     String? iOSSecretKey,
     String? title,
   }) async {
+    if (Platform.isIOS) return;
     assert(
       fileType == AssetType.video || fileType == AssetType.image,
       "Only video and image types are supported",

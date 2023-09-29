@@ -3,7 +3,6 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKShareKit
 import Photos
-import TwitterKit
 
 public class SwiftOpenSocialSharePlugin: NSObject, FlutterPlugin, SharingDelegate {
     var flutterResult: FlutterResult!
@@ -78,12 +77,6 @@ public class SwiftOpenSocialSharePlugin: NSObject, FlutterPlugin, SharingDelegat
             break
         case "shareFileWhatsApp":
             shareFileToWhatsApp(result: result, arguments: args)
-            break
-        case "createTwitterTweet":
-            createTwitterTweet(result: result, arguments: args)
-            break
-        case "shareFileTwitter":
-            shareFileToTwitter(result: result, arguments: args)
             break
         default:
             result(FlutterMethodNotImplemented)
@@ -1347,158 +1340,6 @@ public class SwiftOpenSocialSharePlugin: NSObject, FlutterPlugin, SharingDelegat
                 return
             }
             UIApplication.shared.open(whatsAppStoreLink, options: [:], completionHandler: { _Arg in
-                
-            })
-            
-            result(false)
-        }
-    }
-    
-    func createTwitterTweet(result: @escaping FlutterResult, arguments: [String : Any?]) {
-        let title = arguments["title"] as! String
-        let attachedUrl = arguments["attachedUrl"] as? String
-        let hashtags = arguments["hashtags"] as? [String]
-        let via = arguments["via"] as? String
-        let related = arguments["related"] as? [String]
-        
-        guard let twitterURL = URL(string: "twitter://") else {
-            result(false)
-            return
-        }
-        
-        if (UIApplication.shared.canOpenURL(twitterURL)) {
-            var urlString: String!
-            
-            let ht = hashtags?.joined(separator: ",")
-            let re = related?.joined(separator: ",")
-            
-            urlString = "https://twitter.com/intent/tweet?text=\(title)"
-            
-            if (attachedUrl != nil) {
-                urlString += "&url=\(attachedUrl!)"
-            }
-            if (via != nil) {
-                urlString += "&via=\(via!)"
-            }
-            if (ht != nil) {
-                urlString += "&hashtags=\(ht!)"
-            }
-            if (re != nil) {
-                urlString += "&related=\(re!)"
-            }
-            
-            let twUrl = URL.init(string: urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)
-            
-            if UIApplication.shared.canOpenURL(twUrl!) {
-                UIApplication.shared.open(twUrl!)
-            } else {
-                result(false)
-            }
-        } else {
-            guard let twitterStoreLink = URL(string: "itms-apps://itunes.apple.com/us/app/apple-store/id333903271") else {
-                result(false)
-                return
-            }
-            UIApplication.shared.open(twitterStoreLink, options: [:], completionHandler: { _Arg in
-                
-            })
-            
-            result(false)
-        }
-    }
-    
-    private var store: TWTRSessionStore {
-        return TWTRTwitter.sharedInstance().sessionStore
-    }
-    func shareFileToTwitter(result: @escaping FlutterResult, arguments: [String : Any?]) {
-        let filePath = arguments["filePath"] as? String
-        let fileType = arguments["fileType"] as? String
-        let title = arguments["title"] as? String
-        let iOSConsumerKey = arguments["iOSConsumerKey"] as? String
-        let iOSSecretKey = arguments["iOSSecretKey"] as? String
-        
-        guard let twitterURL = URL(string: "twitter://") else {
-            result(false)
-            return
-        }
-        
-        guard let path = filePath else {
-            result(false)
-            return
-        }
-        
-        guard let consumerKey = iOSConsumerKey else {
-            result(false)
-            return
-        }
-        
-        guard let secretKey = iOSSecretKey else {
-            result(false)
-            return
-        }
-        
-        if (UIApplication.shared.canOpenURL(twitterURL)) {
-            switch fileType {
-            case "video":
-                TWTRTwitter.sharedInstance().start(withConsumerKey: consumerKey, consumerSecret: secretKey)
-                
-                let videoURL = URL(fileURLWithPath: path)
-                guard let userId = store.session()?.userID else { return }
-                let client = TWTRAPIClient.init(userID: userId)
-                
-                // Get data from Url
-                let videoData = try? Data(contentsOf: videoURL)
-                guard let data = videoData else {
-                    result(false)
-                    return
-                }
-                
-                client.sendTweet(withText: title ?? "", videoData: data) {
-                    (tweet, error) in
-                    
-                    if let e = error {
-                        // Handle error
-                        result(e.localizedDescription)
-                    } else {
-                        // Handle Success
-                        result(tweet)
-                    }
-                }
-                break
-            case "image":
-                TWTRTwitter.sharedInstance().start(withConsumerKey: consumerKey, consumerSecret: secretKey)
-                
-                guard let userId = store.session()?.userID else { return }
-                let client = TWTRAPIClient.init(userID: userId)
-                
-                var photoAsset: UIImage!
-                createAssetURL(url: URL(fileURLWithPath: path), result: result, fileType: PHAssetMediaType.image) {
-                    asset in DispatchQueue.main.async {
-                        photoAsset = self.getUIImage(asset: asset)
-                        
-                        client.sendTweet(withText: title ?? "", image: photoAsset) {
-                            (tweet, error) in
-                            
-                            if let e = error {
-                                // Handle error
-                                result(e.localizedDescription)
-                            } else {
-                                // Handle Success
-                                result(tweet)
-                            }
-                        }
-                    }
-                }
-                break
-            default:
-                break
-            }
-        } else {
-            guard let twitterStoreLink = URL(string: "itms-apps://itunes.apple.com/us/app/apple-store/id333903271") else {
-                result(false)
-                return
-            }
-            UIApplication.shared.open(twitterStoreLink, options: [:], completionHandler: { _Arg in
                 
             })
             
