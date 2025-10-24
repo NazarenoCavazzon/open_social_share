@@ -1,3 +1,7 @@
+## 1.0.7
+
+* updated dependencies
+
 ## 1.0.5-6
 
 * twitter methods deleted because of compatibility issues
